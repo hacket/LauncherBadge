@@ -1,5 +1,6 @@
 package me.hacket.launcherbadge
 
+import android.app.Notification
 import android.content.Context
 import android.os.Build
 import me.hacket.launcherbadge.support.*
@@ -10,6 +11,7 @@ object LauncherBadge : ILauncherBadge {
         listOf(
             SamsungBadger(),
             HuaweiBadger(),
+            MiuiBadger(),
             OPPOBadger(),
             VivoBadger(),
             ZTEBadger(),
@@ -47,7 +49,11 @@ object LauncherBadge : ILauncherBadge {
     }
 
 
-    override fun setBadgeCount(context: Context, badgeCount: Int): Boolean {
+    override fun setBadgeCount(
+        context: Context,
+        badgeCount: Int,
+        notification: Notification?
+    ): Boolean {
         if (mSupportBadger == null) {
             if (!initBadger(context)) {
                 Utils.e("No default launcher available")
@@ -58,7 +64,7 @@ object LauncherBadge : ILauncherBadge {
         }
 
         try {
-            mSupportBadger?.setBadgeCount(context, badgeCount)
+            mSupportBadger?.setBadgeCount(context, badgeCount, notification)
             return true
         } catch (e: Exception) {
             Utils.printStackTrace(e)

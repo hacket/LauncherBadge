@@ -1,12 +1,12 @@
 package me.hacket.launcherbadge
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.reflect.Method
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_set_badge_count.setOnClickListener {
             val count = et_count.text.toString().toIntOrNull() ?: 1
-            if (LauncherBadge.setBadgeCount(applicationContext, count)) {
+            if (LauncherBadge.setBadgeCount(applicationContext, count, null)) {
                 Toast.makeText(this, "设置角标=${count}成功", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "设置角标=${count}失败！！！", Toast.LENGTH_SHORT).show()
@@ -43,6 +43,20 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "清除角标失败！！！", Toast.LENGTH_SHORT).show()
             }
+        }
+        btn_miui_badge_count.setOnClickListener {
+            var badgeCount = 0
+            try {
+                badgeCount = et_count.getText().toString().toInt()
+            } catch (e: NumberFormatException) {
+                Toast.makeText(applicationContext, "Error input", Toast.LENGTH_SHORT).show()
+            }
+            startService(
+                Intent(this, BadgeIntentService::class.java).putExtra(
+                    "badgeCount",
+                    badgeCount
+                )
+            )
         }
     }
 }

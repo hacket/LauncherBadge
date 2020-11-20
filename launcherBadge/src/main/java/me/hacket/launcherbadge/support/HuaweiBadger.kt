@@ -1,5 +1,6 @@
 package me.hacket.launcherbadge.support
 
+import android.app.Notification
 import android.content.Context
 import android.net.Uri
 import android.os.Bundle
@@ -11,10 +12,11 @@ import me.hacket.launcherbadge.Utils
  *
  * 测试通过机型：
  *  1.Honor8X(JSN-AL00a) 27(8.1.0) 超过99，显示99+
+ *  2. HUAWEI(ANE-AL00) 28(9)
  */
 class HuaweiBadger : Badger {
 
-    override fun setBadgeCount(context: Context, badgeCount: Int) {
+    override fun setBadgeCount(context: Context, badgeCount: Int, notification: Notification?) {
         val localBundle = Bundle()
         localBundle.putString("package", context.packageName)
         localBundle.putString("class", Utils.getLaunchClassName(context))

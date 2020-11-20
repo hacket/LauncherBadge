@@ -1,5 +1,6 @@
 package me.hacket.launcherbadge.support
 
+import android.app.Notification
 import android.content.Context
 import android.content.Intent
 import me.hacket.launcherbadge.Badger
@@ -13,7 +14,7 @@ import me.hacket.launcherbadge.Utils
  */
 class SamsungBadger : Badger {
 
-    override fun setBadgeCount(context: Context, badgeCount: Int) {
+    override fun setBadgeCount(context: Context, badgeCount: Int, notification: Notification?) {
         val intent = Intent("android.intent.action.BADGE_COUNT_UPDATE")
         intent.putExtra("badge_count", badgeCount)
         intent.putExtra("badge_count_package_name", context.packageName)
