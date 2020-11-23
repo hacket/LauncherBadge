@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-public class Utils {
+public class LauncherBadgeUtils {
 
     private static final String TAG = "launcher_badge";
 
@@ -38,8 +38,7 @@ public class Utils {
     @Nullable
     public static ComponentName getLaunchComponentName(@NonNull Context context) {
         if (mLaunchComponent != null) return mLaunchComponent;
-        Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(context
-                .getPackageName());
+        Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
         if (launchIntent != null) {
             mLaunchComponent = launchIntent.getComponent();
         } else {
@@ -128,7 +127,7 @@ public class Utils {
                 closeable.close();
             }
         } catch (IOException e) {
-            Utils.printStackTrace(e);
+            LauncherBadgeUtils.printStackTrace(e);
         }
     }
 

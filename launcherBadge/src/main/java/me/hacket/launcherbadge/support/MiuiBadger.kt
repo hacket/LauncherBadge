@@ -3,7 +3,7 @@ package me.hacket.launcherbadge.support
 import android.app.Notification
 import android.content.Context
 import me.hacket.launcherbadge.Badger
-import me.hacket.launcherbadge.Utils
+import me.hacket.launcherbadge.LauncherBadgeUtils
 
 class MiuiBadger : Badger {
     override fun setBadgeCount(context: Context, badgeCount: Int, notification: Notification?) {
@@ -27,7 +27,7 @@ class MiuiBadger : Badger {
             )
             method.invoke(extraNotification, badgeCount)
         } catch (e: Exception) {
-            Utils.printStackTrace(e)
+            LauncherBadgeUtils.printStackTrace(e)
         }
     }
 

@@ -37,7 +37,7 @@
         android:id="@+id/btn_miui_badge_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Miui设置角标数量"
+        android:text="Miui设置角标数量并finish(设置本地通知)"
         android:textAllCaps="false" />
 
 </LinearLayout>

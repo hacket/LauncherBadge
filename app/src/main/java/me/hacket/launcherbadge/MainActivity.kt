@@ -1,6 +1,5 @@
 package me.hacket.launcherbadge
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         tv_info.text = """
-            launcher:${Utils.getLauncherPackageName2(this)}
+            launcher:${LauncherBadgeUtils.getLauncherPackageName2(this)}
             deviceName:$deviceName
             brand:${Build.BRAND}(${Build.MODEL})
             version:${Build.VERSION.SDK_INT}(${Build.VERSION.RELEASE})
@@ -57,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                 "com.miui.mihome2",
                 "com.i.miui.launcher"
             )
-            if (miuiLauncherList.contains(Utils.getLauncherPackageName(this))) {
+            if (miuiLauncherList.contains(LauncherBadgeUtils.getLauncherPackageName(this))) {
                 finish() // 在小米设备上APP打开着的情况下，是不显示角标的，只有APP关闭了才会显示角标
             }
         }
