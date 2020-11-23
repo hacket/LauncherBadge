@@ -2,10 +2,10 @@
     package="me.hacket.launcherbadge.lib">
 
     <!--for android-->
-    <!--<uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>-->
-    <!--<uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>-->
-    <!--<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />-->
-    <!--<uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />-->
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
 
 
     <!--for Samsung-->

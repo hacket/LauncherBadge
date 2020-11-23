@@ -45,18 +45,21 @@ class MainActivity : AppCompatActivity() {
             }
         }
         btn_miui_badge_count.setOnClickListener {
-            var badgeCount = 0
-            try {
-                badgeCount = et_count.getText().toString().toInt()
-            } catch (e: NumberFormatException) {
-                Toast.makeText(applicationContext, "Error input", Toast.LENGTH_SHORT).show()
-            }
-            startService(
-                Intent(this, BadgeIntentService::class.java).putExtra(
-                    "badgeCount",
-                    badgeCount
-                )
+            val badgeCount = et_count.text.toString().toIntOrNull() ?: 1
+            BadgeNotificationHelper().notify(this, badgeCount)
+
+            val miuiLauncherList = listOf(
+                "com.miui.miuilite",
+                "com.miui.home",
+                "com.miui.miuihome",
+                "com.miui.miuihome2",
+                "com.miui.mihome",
+                "com.miui.mihome2",
+                "com.i.miui.launcher"
             )
+            if (miuiLauncherList.contains(Utils.getLauncherPackageName(this))) {
+                finish() // 在小米设备上APP打开着的情况下，是不显示角标的，只有APP关闭了才会显示角标
+            }
         }
     }
 }
