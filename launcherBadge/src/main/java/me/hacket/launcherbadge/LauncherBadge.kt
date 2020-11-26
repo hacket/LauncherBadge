@@ -38,7 +38,7 @@ object LauncherBadge : ILauncherBadge {
 
         mSupportBadger = supportBadgers.find { badger ->
             badger.supportLauncherPackageNames()
-                .find { pkn -> pkn == LauncherBadgeUtils.getLauncherPackageName(context) } != null
+                .find { pkn -> pkn == LauncherBadgeUtils.getLauncherPackageName2(context) } != null
         }
 
         if (mSupportBadger == null) {
@@ -69,7 +69,13 @@ object LauncherBadge : ILauncherBadge {
         }
 
         try {
-            mSupportBadger?.setBadgeCount(context, badgeCount, notification)
+            if (notification == null) {
+                mSupportBadger?.setBadgeCount(context, badgeCount, null)
+            } else {
+                if (mSupportBadger is MiuiBadger) { // 目前只支持Miui Launcher绑定到Notification
+                    mSupportBadger?.setBadgeCount(context, badgeCount, notification)
+                }
+            }
             return true
         } catch (e: Exception) {
             LauncherBadgeUtils.printStackTrace(e)

@@ -25,19 +25,14 @@
         android:id="@+id/btn_set_badge_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="设置角标数量"
+        android:text="设置角标数量(Miui Launcher需要回到App在后台并绑定Notification)"
         android:textAllCaps="false" />
+
     <Button
         android:id="@+id/btn_clear_badge_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="清除角标数量"
-        android:textAllCaps="false" />
-    <Button
-        android:id="@+id/btn_miui_badge_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Miui设置角标数量并finish(设置本地通知)"
+        android:text="清除角标数量(MIUI打开App，清除App角标都会消失)"
         android:textAllCaps="false" />
 
 </LinearLayout>
