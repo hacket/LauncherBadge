@@ -1,3 +1,4 @@
 include ':launcherBadge'
+include ':launcherbadge_kt'
 include ':app'
 rootProject.name = "LauncherBadge"
